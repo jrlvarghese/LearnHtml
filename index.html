@@ -31,10 +31,26 @@
             // USING ARRAYS IN JAVASCRIPT
             var fruits = ['apple', 'orange', 'mangoe'];
             console.log(fruits[0]);
+            console.log(fruits);
 
             for(var i=0; i<fruits.length; i++){
                 console.log(fruits[i]);
             }
+
+            // ADDING ELEMENTS INTO AN ARRAY 
+            var animals = new Array('dog', 'cat', 'fish');
+            console.log(animals);
+            animals.push('monkey');
+            console.log('array after push '+animals);
+            console.log('array after sorting ' + animals.sort());
+
+            //ARRAYS INDEX CAN SOMETHING OTHER THAN NUMBERS
+            var car = [];
+            car['color'] = 'red';
+            car['fuel'] = 'diesel';
+            car['brand'] = 'toyota';
+            console.log(car);
+            console.log(car['brand']);
         </script>
     </body>
 </html>

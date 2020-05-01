@@ -5,12 +5,17 @@
         <meta charset="utf-8">
     </head>
     <body>
+        <div id="test"></div>
         <h3>Happy learning</h3>
         <script>
             // this method will log output to the console
             console.log("Hello world!");
             // this method will write output in the html page itself
-            document.write("Hello world");
+            document.write("Hello world by Js");
+            // method to write into an alert box
+            window.alert('hello world!!')
+            // another method to output into the html page
+            document.getElementById('test').innerHTML = 'Hello world using getElementById method!'
         </script>
     </body>
 </html>

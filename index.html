@@ -7,6 +7,47 @@
     <body>
         <div id="test"></div>
         <h3>Happy learning</h3>
+        <br><br>
+        <!--see the script-->
+        <!--
+        onmousehover
+        onmouseout
+        ondblclick
+        -->
+        <button onclick="getDate()">GET DATE</button>
+        <h1 id="date"></h1>
+        <br><br>
+        <!--
+            onblur
+        onfocus
+        onreset
+        onselect
+        onkeydown
+        onkeyup
+        onkeypress
+        onchange
+        onsubmit
+        -->
+        <form onsubmit="submitform()">
+            <div>
+                <label>Name</label>
+                <input type="text" id="fName">
+            </div>
+            <div>
+                <label>Email</label>
+                <input type="text" id="fEmail">
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+
+        <!-- ANOTHER METHOD FOR IMPLEMENTING FORM -->
+        <form id='myform'>
+            <div>
+                <label>Country</label>
+                <input type='text' id='fCountry'>
+            </div>
+            <input type='submit' value='Submit'>
+        </form>
         <script>
             // this method will log output to the console
             //console.log("Hello world!");
@@ -76,6 +117,37 @@
             ];
 
             console.log('accessing array of objects '+bikes[1].make);
+
+
+            //FUNCTIONS IN JAVA SCRIPT
+            function sayHello(){
+                console.log('Hello');
+            }
+
+            function saySomething(greeting){
+                window.alert(greeting);
+            }
+
+            function getDate(){
+                var d = new Date();
+                document.getElementById('date').innerHTML = d;
+            }
+
+            function submitform(){
+                var name = document.getElementById('fName').value;
+                var email = document.getElementById('fEmail').value;
+                window.alert('Submitted form ' + name + ' ' + email);
+            }
+
+            function submitformbyid(){
+                var country = document.getElementById('fCountry').value;
+                window.alert('done \n your country is '+ country);
+            }
+            sayHello();
+            //saySomething('How are you?');
+            // another method for submitting form using id
+            document.getElementById('myform').addEventListener(
+                'submit', submitformbyid, false);
         </script>
     </body>
 </html>

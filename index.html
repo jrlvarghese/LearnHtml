@@ -49,8 +49,11 @@
             
             // validate that no fields are empty
             if(inputName == "" || inputEmail == "" || inputPassword == "" || inputConfirmPassword == ""){
+              msg.className = "alert alert-danger";
               msg.innerHTML = 'Please input your details!!';
             }else{
+              // this is success message with green background by adding classes
+              msg.className = "alert alert-success";
               msg.innerHTML = inputName + ' registered with mail id ' + inputEmail;
             }
             console.log('Submitted the form....');

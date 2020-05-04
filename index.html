@@ -33,5 +33,18 @@
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
+
+        <script>
+          function register(e){
+            e.preventDefault();
+            // get each values from the field
+            var inputName = document.getElementById('inputName').value;
+            var inputEmail = document.getElementById('inputEmail').value;
+            var inputPassword = document.getElementById('inputPassword').value;
+            var inputConfirmPassword = document.getElementById('inputConfirmPassword').value;
+            console.log('Submitted the form....');
+          }
+          document.getElementById('regForm').addEventListener('submit', register, false);
+        </script>
     </body>
 </html>

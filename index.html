@@ -19,10 +19,14 @@
               <label>Name</label>
               <input type="text" class="form-control" id="inputName" name="name">
             </div>
+            <div class="text-danger" id="nameAlert"></div>
+            
             <div class="form-group">
               <label>Email</label>
               <input type="text" class="form-control" id="inputEmail" name="email">
             </div>
+            <div class="text-danger" id="emailAlert"></div>
+            
             <div class="form-group">
               <label>Password</label>
               <input type="password" class="form-control" id="inputPassword" name="password">
@@ -31,6 +35,7 @@
               <label>Confirm Password</label>
               <input type="password" class="form-control" id="inputConfirmPassword" name="confirmPpassword">
             </div>
+            <div class="text-danger" id="passwordAlert"></div>
             
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
@@ -46,15 +51,46 @@
             var inputConfirmPassword = document.getElementById('inputConfirmPassword').value;
             // get the div with id 'msg'
             var msg = document.getElementById("msg");
+            // get div for name validity alert
+            var nameAlert = document.getElementById("nameAlert");
+            // variables for validating email
+            var atPos = inputEmail.indexOf('@');
+            var dotPos = inputEmail.indexOf('.');
+            var emailAlert = document.getElementById("emailAlert");
+            //console.log(atPos, ' at pos');
+            //variables for validating matching password
+            var passwordAlert = document.getElementById("passwordAlert");
             
             // validate that no fields are empty
             if(inputName == "" || inputEmail == "" || inputPassword == "" || inputConfirmPassword == ""){
               msg.className = "alert alert-danger";
               msg.innerHTML = 'Please input your details!!';
             }else{
-              // this is success message with green background by adding classes
-              msg.className = "alert alert-success";
-              msg.innerHTML = inputName + ' registered with mail id ' + inputEmail;
+              // check for a valid name
+              if(inputName.length < 3){
+                msg.className = "alert alert-danger";
+                msg.innerHTML = "Please enter valid details";
+                nameAlert.innerHTML = "Name should be atleast 3 letters";
+              }else{
+                // check for a valid email
+                if(atPos>inputEmail.length || atPos>dotPos || dotPos>inputEmail.length || atPos<0 || dotPos<0){
+                  msg.className = "alert alert-danger";
+                  msg.innerHTML = "Please enter valid details";
+                  emailAlert.innerHTML = "Please input a valid email id";
+                }else{
+                  // check for matching password
+                  if(inputPassword != inputConfirmPassword){
+                    msg.className = "alert alert-danger";
+                    msg.innerHTML = "Please enter valid details";
+                    passwordAlert.innerHTML = "Password and Confirm password should match!!";
+                  }else{
+                    // this is success message with green background by adding classes
+                    msg.className = "alert alert-success";
+                    msg.innerHTML = inputName + ' registered with mail id ' + inputEmail;
+                  }
+                }
+              }
+              
             }
             console.log('Submitted the form....');
           }

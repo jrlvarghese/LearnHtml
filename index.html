@@ -46,8 +46,13 @@
             var inputConfirmPassword = document.getElementById('inputConfirmPassword').value;
             // get the div with id 'msg'
             var msg = document.getElementById("msg");
-            msg.innerHTML = inputName + ' registered with mail id ' + inputEmail;
             
+            // validate that no fields are empty
+            if(inputName == "" || inputEmail == "" || inputPassword == "" || inputConfirmPassword == ""){
+              msg.innerHTML = 'Please input your details!!';
+            }else{
+              msg.innerHTML = inputName + ' registered with mail id ' + inputEmail;
+            }
             console.log('Submitted the form....');
           }
           document.getElementById('regForm').addEventListener('submit', register, false);

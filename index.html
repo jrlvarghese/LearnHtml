@@ -11,6 +11,8 @@
       <div class="container">
         <h3>Happy learning</h3>
         <h1 class="text-center">Register with us</h1>
+        <!-- add a div to display the alert message for form submission -->
+        <div class="alert" id="msg"></div>
         <br><br>
         <form id="regForm">
             <div class="form-group">
@@ -42,6 +44,10 @@
             var inputEmail = document.getElementById('inputEmail').value;
             var inputPassword = document.getElementById('inputPassword').value;
             var inputConfirmPassword = document.getElementById('inputConfirmPassword').value;
+            // get the div with id 'msg'
+            var msg = document.getElementById("msg");
+            msg.innerHTML = inputName + ' registered with mail id ' + inputEmail;
+            
             console.log('Submitted the form....');
           }
           document.getElementById('regForm').addEventListener('submit', register, false);

@@ -7,7 +7,7 @@
         link for boot strap cdn: https://www.bootstrapcdn.com/ -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     </head>
-    <body>
+    <body onload="eraseAll()">
       <div class="container">
         <h3>Happy learning</h3>
         <h1 class="text-center">Register with us</h1>
@@ -42,6 +42,7 @@
         </div>
 
         <script>
+          
           function register(e){
             e.preventDefault();
             // get each values from the field
@@ -93,6 +94,15 @@
               
             }
             console.log('Submitted the form....');
+          }
+          // erase all input fields if something is present while loding a page
+          function eraseAll(){
+            //erase everything here
+            //inputName = "";
+            //inputEmail = "";
+            inputName.value = "";
+            inputEmail.value = "";
+            console.log("load complete");
           }
           document.getElementById('regForm').addEventListener('submit', register, false);
         </script>

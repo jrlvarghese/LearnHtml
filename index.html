@@ -17,13 +17,23 @@ we can modify the username for getting different users-->
     <body>
         <h3>Happy learning</h3>
         <div class="container">
+          <form id="user_form">
+            <div class="form-group">
+              <label>Github user name:</label>
+              <input type="text" id="inputUsername" class="form-control">
+            </div>
+          </form>
           <div id="profile"></div>
         </div>
         
         <script>
           function getProfile(){
+            console.log('fetching....');
             var gitUrl = 'https://api.github.com/users/';
-            var userName = 'jrlvarghese';
+            var userName = document.getElementById("inputUsername").value;
+            if(!userName || userName == ""){
+              userName = 'jrlvarghese';
+            }
             // initialise the constructor for the request
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function(){
@@ -64,7 +74,8 @@ we can modify the username for getting different users-->
           }
 
           // use the function here
-          getProfile();
+          //getProfile();
+          document.getElementById("user_form").addEventListener('submit', (event)=>{event.preventDefault();getProfile();}, false);
         </script>
     </body>
 </html>

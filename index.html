@@ -21,8 +21,9 @@ we can modify the username for getting different users-->
               console.log('called the function');
               if(xhttp.readyState == 4 && xhttp.status == 200){
                 console.log('ready');
-                var gitUser = xhttp.responseText;
-                document.getElementById('profile').innerHTML = gitUser;
+                // parse the data in json format so that it can be used for furhter processing
+                var gitUser = JSON.parse(xhttp.responseText);
+                document.getElementById('profile').innerHTML = gitUser.name;
               }
               
             }

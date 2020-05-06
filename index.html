@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html>
     <head>
+      <!-- about project 
+https://api.github.com/users/
+from the above url we will get the json formated data fro github
+we can modify the username for getting different users-->
         <title>Github ajax project udacity</title>
         <meta charset="utf-8">
     </head>
     <body>
         <h3>Happy learning</h3>
+        <div id="profile"></div>
+        <script>
+          function getProfile(){
+            var gitUrl = 'https://api.github.com/users/';
+            var userName = 'jrlvarghese';
+            // initialise the constructor for the request
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+              console.log('called the function');
+              if(xhttp.readyState == 4 && xhttp.status == 200){
+                console.log('ready');
+                var gitUser = xhttp.responseText;
+                document.getElementById('profile').innerHTML = gitUser;
+              }
+              
+            }
+            // initialize the request using the method
+            xhttp.open('GET', gitUrl + userName, true);
+            // send request to the server
+            xhttp.send();
+          }
+
+          // use the function here
+          getProfile();
+        </script>
     </body>
 </html>

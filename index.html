@@ -7,10 +7,19 @@ from the above url we will get the json formated data fro github
 we can modify the username for getting different users-->
         <title>Github ajax project udacity</title>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <style>
+          img{
+            width:100%;
+          }
+        </style>
     </head>
     <body>
         <h3>Happy learning</h3>
-        <div id="profile"></div>
+        <div class="container">
+          <div id="profile"></div>
+        </div>
+        
         <script>
           function getProfile(){
             var gitUrl = 'https://api.github.com/users/';
@@ -23,7 +32,28 @@ we can modify the username for getting different users-->
                 console.log('ready');
                 // parse the data in json format so that it can be used for furhter processing
                 var gitUser = JSON.parse(xhttp.responseText);
-                document.getElementById('profile').innerHTML = gitUser.name;
+                document.getElementById('profile').innerHTML = 
+                `<div class="card">
+                  <div class="card-header"><h3>${gitUser.name}</h3></div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <img src="${gitUser.avatar_url}">
+                      </div>
+                      <div class="col-md-9">
+                        <span class="card text-white bg-primary mb-3">Public repos ${gitUser.public_repos}</span>
+                        <span class="card text-white bg-dark">Public gists ${gitUser.public_gists}</span>
+                        <br>
+                        <ul class="list-group">
+                          <li>Website: ${gitUser.blog}</li>
+                          <li>Email: ${gitUser.email}</li>
+                        </ul>
+                        <br><br>
+                        <a href="${gitUser.html_url}" target="_blank" class="btn btn-secondary">Visit github</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>`;
               }
               
             }
